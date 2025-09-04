@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Personal Website</title>
+  <meta name="description" content="Personal introduction, projects, and contact." />
+  <style>
+    /* ---------- CSS RESET (lite) ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.6; color: var(--text); background: var(--bg); }
+
+    /* ---------- THEME ---------- */
+    :root {
+      --bg: #0b0f1a;
+      --card: #121829;
+      --text: #e6e9f2;
+      --muted: #a5afc7;
+      --accent: #6ee7b7; /* mint */
+      --accent-2: #60a5fa; /* blue */
+      --border: #1f2942;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --maxw: 1080px;
+    }
+    .light {
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0ea5e9;
+      --accent-2: #10b981;
+      --border: #e5e7eb;
+      --shadow: 0 8px 24px rgba(2,6,23,.08);
+    }
+
+    /* ---------- LAYOUT UTILS ---------- */
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+    .btn { display: inline-block; padding: 12px 18px; border-radius: 999px; border: 1px solid var(--border); background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0b1220; font-weight: 700; text-decoration: none; box-shadow: var(--shadow); transition: transform .15s ease, filter .15s ease; }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); box-shadow: none; }
+    .chip { display: inline-block; padding: 6px 12px; border: 1px solid var(--border); border-radius: 999px; font-size: 14px; color: var(--muted); }
+    .grid { display: grid; gap: 20px; }
+    .section { padding: 80px 0; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+
+    /* ---------- NAV ---------- */
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(12px); background: color-mix(in oklab, var(--bg) 86%, transparent); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .3px; }
+    .brand .logo { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow); }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-weight: 600; }
+    nav a:hover { color: var(--text); }
+
+    /* ---------- HERO ---------- */
+    .hero { padding: 96px 0 72px; display: grid; gap: 28px; align-items: center; }
+    .hero h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.2; margin: 0; }
+    .hero p { font-size: clamp(16px, 2.4vw, 20px); color: var(--muted); margin: 0; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+    .hero .me { width: 200px; height: 200px; border-radius: 50%; border: 0px solid var(--border); background: linear-gradient(135deg, #94a3b8, #cbd5e1); }
+
+    /* ---------- ABOUT ---------- */
+    .about { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
+    .about .blurb { padding: 24px; }
+    .about .stats { padding: 24px; display: grid; gap: 12px; }
+    .stat { display: grid; grid-template-columns: 1fr auto; align-items: baseline; border: 1px dashed var(--border); border-radius: 12px; padding: 16px; }
+
+    /* ---------- SKILLS ---------- */
+    .skills .list { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    /* ---------- CONTACT ---------- */
+form { display: grid; gap: 12px; }
+input, textarea { width: 100%; padding: 12px 14px; border-radius: 12px; background: var(--card); border: 1px solid var(--border); color: var(--text); }
+textarea { min-height: 120px; resize: vertical; }
+
+   
+    /* ---------- FOOTER ---------- */
+    footer { padding: 40px 0; color: var(--muted); border-top: 1px solid var(--border); }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 860px) {
+      .about { grid-template-columns: 1fr; }
+      .hero { text-align: center; }
+      .hero-cta { justify-content: center; }
+    }
+
+
+ header img {
+      width: 80px; /* adjust size */
+      height: 80px;
+      border-radius: 50%; /* Makes it circular */
+      object-fit: cover; /* Ensures the image fits inside circle */
+     
+ }
+
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="container nav">
+<div class="brand">
+
+ <!-- Replace logo.png with your image filename -->
+    <img src="logo.png" alt="My Logo">
+       
+    <h1><span>SHIVU V M</span></h1>
+      </div>
+      <nav aria-label="Primary Navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+       
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" class="btn ghost" style="margin-left:12px">🌓 Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="section">
+    <div class="container hero">
+      <div class="grid" style="grid-template-columns: 1fr auto; align-items:center; gap:10px;">
+        <div>
+          <p class="chip">Hello! I’m</p>
+          <h1>Shivu V M —
+            <span style="background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent;">Developer • Designer • Learner</span>
+          </h1>
+          <p>
+            I build clean, fast, and accessible web experiences. I love solving real problems with code
+            and collaborating with curious people.
+            </p>
+        
+            <div >
+              <a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=lm7f1sh">Instagram account</a>
+             <div>
+              <a href="https://youtube.com/@shivuvm-q3h?si=GM7RQP-BZvK-77iP">YouTube Channel</a>
+             </div>
+            </div>
+            </div>
+            <div>
+                         <img src="shivu.jpg" alt="shivu v m" class="me" aria-label="Profile image placeholder" ></img>
+            </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container about">
+      <div class="card blurb">
+        <h2>About me</h2>
+        <p>
+          I’m a front‑end developer based in <strong>Tq:BADAMI, Dist:BAGALKOT</strong>. My focus is on building delightful
+          UI with solid engineering practices — semantic HTML, modern CSS, and just‑enough JavaScript.
+        </p>
+        <p>
+          Outside of work, I enjoy reading, sketching UI ideas, and contributing to open‑source.
+        </p>
+      </div>
+      <div class="card stats">
+        <div class="stat"><span>Experience</span><strong>1+ years</strong></div>
+        
+        <div class="stat"><span>Response time</span><strong>&lt; 24 hrs</strong></div>
+        <div class="stat"><span>Availability</span><strong>Open to work</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2>Skills</h2>
+      <p class="muted">Tools & technologies I use regularly</p>
+      <div class="card" style="padding: 20px;">
+        <div class="list">
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3 / Tailwind</span>
+          <span class="chip">JavaScript (ES6+)</span>
+          <span class="chip">React</span>
+          <span class="chip">Git & GitHub</span>
+          <span class="chip">Responsive Design</span>
+          <span class="chip">Accessibility (a11y)</span>
+          <span class="chip">Figma</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="card" style="padding: 20px;">
+        <form name="contact" onsubmit="return handleSubmit(event)">
+          <label>
+            Your Name 
+            <div>
+             <input required name="name" placeholder="shivu v m" /> 
+            </div>
+           
+          </label>
+          <label>
+            Your Email
+            <div>
+              <input required type="email" name="email" placeholder="you@example.com" />
+            </div>
+
+          </label>
+          <label>
+            Message
+            <div>
+               <textarea required name="message" placeholder="Hello! I'd like to collaborate..."></textarea>
+            </div>
+
+          </label>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <button class="btn" type="submit">Send message</button>
+            <span class="muted" id="formStatus" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <small>© <span id="year"></span> Shivu V M. All rights reserved.</small>
+      <div style="display:flex; gap:12px;">
+        <a class="chip" href="mailto:you@example.com">Email</a>
+        <a class="chip" href="https://wwww.GitHub.com" target="_blank" rel="noopener">GitHub</a>
+        <a class="chip" href="https://www.linkedin.com/in/shivu-v-m-9473b1334" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle (light/dark) stored in localStorage
+    const root = document.documentElement;
+    const toggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') document.body.classList.add('light');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Demo form handler (client-side only)
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = Object.fromEntries(new FormData(form));
+      document.getElementById('formStatus').textContent = 'Thanks, ' + data.name + '! I\'ll get back to you soon.';
+      form.reset();
+      return false;
+    }
+  </script>
+
+  <!--
+  🔧 HOW TO CUSTOMIZE
+  1) Replace "Your Name" and other placeholders with your details.
+  2) Put your profile photo: replace the .me div with an <img src="me.jpg" alt="Your Name" class="me"> and add me.jpg to your folder.
+  3) Update links (GitHub, LinkedIn, Email). Add resume.pdf to enable the download button.
+  4) Duplicate a project <article> to add more projects.
+  5) Deploy: drag this file to Netlify, Vercel, or GitHub Pages.
+  -->
+</body>
+</html>
